@@ -5,13 +5,14 @@
   </head>
   <body>
     <div ng-show='division.reporters.length'>
-      <h3>Reporters assigned to {{ division.name }}</h3>
+      <h3>Reporters assigned to {{division.name}}</h3>
       <ul>
         <li ng-repeat='item in division.reporters'>{{item.name}}</li>
       </ul>
     </div>
     <div>
-      <form ng-submit='addReporter()' class='form-inline' role='form'>
+      <h4>Add reporter to {{division.name}}</h4>
+      <form ng-submit='addReporter(item)' class='form-inline' role='form'>
         <div class='form-group'>
         <p>Reporter Name</p>
         <input type='text' class='from-control' ng-model='reporterName'>
