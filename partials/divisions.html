@@ -4,27 +4,39 @@
     <title>Newspaper Divisions</title>
   </head>
   <body>
+
     <div class='col-md-12'>
-      <div ng-show='divisions.length'>
-        <h3>Division Roster</h3>
+        <h3 ng-show='divisions.length && filtered.length'>Division Roster</h3>
+        <h3 ng-show='divisions.length && !filtered.length'>No Divisions Have been created yet.</h3>
         <ul>
-          <li ng-repeat="item in divisions | orderBy:'divisionName':true">
+          <!-- <li ng-repeat="item in divisions | orderBy:'divisionName':true"> -->
+          <li ng-repeat="item in divisions | filter:{name: search}">
             <p><a ui-sref ='divisions.reporters({divisionId: item.id})'>{{item.name}}</a></p>
-              <!-- <a ui-sref='divisions.reporters({divisionId: item.id})'>{{item.name}}</a> -->
           </li>
         </ul>
-      </div>
     </div>
-    <div class='col-md-12'>
 
-        <form ng-submit="DivisionsFactory.addDivision()" class='form-inline' role='form'>
-          <div class='form-group'>
-            <h4>Create a division </h4>
-            <input type='text' ng-model='DivisionsFactory.divisionName' class='form-control'>
-          </div>
+    <div class='col-md-12'>
+      <form ng-submit="DivisionsFactory.addDivision()" class='form-inline' role='form'>
+        <div class='form-group'>
+          <h4>Create a Division </h4>
+          <input type='text' ng-model='DivisionsFactory.divisionName' class='form-control'>
           <button type='submit' class='btn btn-default'>Submit</button>
-        </form>
+        </div>
+      </form>
     </div>
+
+    <br>
+
+    <div>
+      <form class='form-inline' role='form'>
+        <div class='form-group'>
+          <h4> Search Divisions </h4>
+          <input ng-model='search' type='text' class='form-control' placeholder='search'>
+        </div>
+      </form>
+    </div>
+
     <div ui-view></div>
   </body>
 </html>
