@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div ng-show='division.reporters.length'>
+      <h3>Reporters assigned to {{ division.name }}</h3>
+      <ul>
+        <li ng-repeat='item in division.reporters'>{{item.name}}</li>
+      </ul>
+    </div>
+    <div>
+      <form ng-submit='addReporter()' class='form-inline' role='form'>
+        <div class='form-group'>
+        <p>Reporter Name</p>
+        <input type='text' class='from-control' ng-model='reporterName'>
+        <p>Years of Service</p>
+        <input type='text' class='form-control' ng-model='reporterYearsOfService'>
+        <p>Birthday</p>
+        <input type='text' class='form-control' ng-model='reporterBirthday'>
+        </div>
+        <button type='submit' class='btn btn-default'>Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
