@@ -7,7 +7,16 @@
     <div ng-show='division.reporters.length'>
       <h3>Reporters assigned to {{division.name}}</h3>
       <ul>
-        <li ng-repeat='item in division.reporters'>{{item.name}}</li>
+        <li ng-repeat='item in division.reporters'>
+          <div ng-click='viewReporter=true' ng-hide='viewReporter'>
+            {{item.name}}
+          </div>
+          <div ng-show='viewReporter' ng-click='viewReporter=false'>
+            <p>{{item.name}}</p>
+            <p>{{item.yearsOfService}}</p>
+            <p>{{item.birthDay}}</p>
+          </div>
+        </li>
       </ul>
     </div>
     <div>
@@ -19,7 +28,7 @@
         <p>Years of Service</p>
         <input type='text' class='form-control' ng-model='reporterYearsOfService'>
         <p>Birthday</p>
-        <input type='text' class='form-control' ng-model='reporterBirthday'>
+        <input type='text' class='form-control' ng-model='reporterBirthDay'>
         </div>
         <button type='submit' class='btn btn-default'>Submit</button>
       </form>
