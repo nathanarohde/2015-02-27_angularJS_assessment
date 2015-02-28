@@ -5,12 +5,23 @@
   </head>
   <body>
 
+    <div>
+      <form class='form-inline' role='form'>
+        <div class='form-group'>
+          <h4> Search Divisions </h4>
+          <input ng-model='query' type='text' class='form-control' value=' ' autofocus>
+        </div>
+      </form>
+    </div>
+
+    <br>
+
     <div class='col-md-12'>
-        <h3 ng-show='divisions.length && filtered.length'>Division Roster</h3>
-        <h3 ng-show='divisions.length && !filtered.length'>No Divisions Have been created yet.</h3>
+        <h3 ng-show='divisions.length'>Division Roster</h3>
+        <h3 ng-show='!divisions.length'>No Divisions Have been created yet.</h3>
         <ul>
           <!-- <li ng-repeat="item in divisions | orderBy:'divisionName':true"> -->
-          <li ng-repeat="item in divisions | filter:{name: search}">
+          <li ng-repeat="item in divisions | filter:{ name:query }">
             <p><a ui-sref ='divisions.reporters({divisionId: item.id})'>{{item.name}}</a></p>
           </li>
         </ul>
@@ -25,18 +36,6 @@
         </div>
       </form>
     </div>
-
-    <br>
-
-    <div>
-      <form class='form-inline' role='form'>
-        <div class='form-group'>
-          <h4> Search Divisions </h4>
-          <input ng-model='search' type='text' class='form-control' placeholder='search'>
-        </div>
-      </form>
-    </div>
-
     <div ui-view></div>
   </body>
 </html>
